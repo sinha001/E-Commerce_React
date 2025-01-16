@@ -1,0 +1,59 @@
+:root {
+  --primary-color: #441752;
+  --background-color: #eeeeee;
+  --color: #fff;
+  --secondary-color: #3B1E54;
+}
+
+.nav-ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.nav-ul {
+  padding: 5px;
+  margin: 0px;
+  background-color: var(--primary-color);
+}
+
+.nav-ul li a {
+  color: var(--color);
+  text-decoration: none;
+  padding: 5px;
+}
+
+.footer {
+  width: 100%;
+  bottom: 0%;
+  height: 60px;
+  color: #dbd3d3;
+  background-color: var(--primary-color);
+  text-align: center;
+}
+
+
+.card{
+  border:none !important;
+}
+
+.card-body{
+  border-radius: 15px;
+  background-color: var(--secondary-color);
+}
+
+.vh-100 .form-label, 
+.vh-100 .form-check-label 
+, .custom-text-color {
+  color: #FFFFFF !important;
+}
+
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
+}
