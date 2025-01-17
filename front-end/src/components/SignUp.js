@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -8,21 +8,27 @@ const SignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const auth = localStorage.getItem("user");
+    if (auth) {
+      navigate("/");
+    }
+  });
+
   const collectData = async (e) => {
     e.preventDefault(); // Prevents form from refreshing
     console.warn(name, password, email, phoneNumber);
-    let result = await fetch('http://localhost:5000/register',{
-        method: 'post',
-        body: JSON.stringify({name,password,email,phoneNumber}),
-        headers:{
-            'Content-Type':'application/json'
-        }
+    let result = await fetch("http://localhost:5000/register", {
+      method: "post",
+      body: JSON.stringify({ name, password, email, phoneNumber }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     result = await result.json();
-    if(result){ 
-        navigate('/');
-    }
+    localStorage.setItem("user", JSON.stringify(result));
+    navigate("/");
   };
 
   return (
@@ -46,7 +52,7 @@ const SignUp = () => {
                           onChange={(e) => setName(e.target.value)}
                           className="form-control form-control-lg"
                         />
-                        <label className="form-label" for="Name">
+                        <label className="form-label" htmlFor="Name">
                           Name
                         </label>
                       </div>
@@ -66,7 +72,7 @@ const SignUp = () => {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                         />
-                        <label for="password" className="form-label">
+                        <label htmlFor="password" className="form-label">
                           Password
                         </label>
                       </div>
@@ -83,7 +89,7 @@ const SignUp = () => {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label className="form-label" for="emailAddress">
+                        <label className="form-label" htmlFor="emailAddress">
                           Email
                         </label>
                       </div>
@@ -99,7 +105,7 @@ const SignUp = () => {
                           value={phoneNumber}
                           onChange={(e) => setPhoneNumber(e.target.value)}
                         />
-                        <label className="form-label" for="phoneNumber">
+                        <label className="form-label" htmlFor="phoneNumber">
                           Phone Number
                         </label>
                       </div>

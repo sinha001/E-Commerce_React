@@ -16,10 +16,20 @@
   background-color: var(--primary-color);
 }
 
+.logo{
+  margin:0 10px 0 10px;
+  width: 6rem;
+  height: 2rem;
+}
+
 .nav-ul li a {
   color: var(--color);
   text-decoration: none;
   padding: 5px;
+}
+
+.nav-right{
+  text-align: right;
 }
 
 .footer {
@@ -44,7 +54,7 @@
 .vh-100 .form-label, 
 .vh-100 .form-check-label 
 , .custom-text-color {
-  color: #FFFFFF !important;
+  color: #FFFFFF;
 }
 
 
@@ -57,3 +67,29 @@
 .card-registration .select-arrow {
   top: 13px;
 }
+.login-card {
+  background-color: white;
+  border: 2px solid #000;
+  padding: 40px;
+  box-shadow: 10px 10px 0 #000;
+  text-align: center;
+}
+
+.login-control {
+  box-shadow: 3px 3px 0 #000;
+  border: 2px solid #000;
+}
+
+.login-text-color {
+  color: #000 !important;
+}
+
+button.login-button {
+  background-color: #ffcc00 ;
+  border: 2px solid #000;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 3px 3px 0 #000;
+}
+
