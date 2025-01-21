@@ -2,7 +2,15 @@
   --primary-color: #441752;
   --background-color: #eeeeee;
   --color: #fff;
-  --secondary-color: #3B1E54;
+  --secondary-color: #3b1e54;
+}
+
+body,
+html {
+  height: 100%; /* Ensure body and html take full height */
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Set flexbox layout */
 }
 
 .nav-ul li {
@@ -16,8 +24,8 @@
   background-color: var(--primary-color);
 }
 
-.logo{
-  margin:0 10px 0 10px;
+.logo {
+  margin: 0 10px 0 10px;
   width: 6rem;
   height: 2rem;
 }
@@ -28,7 +36,7 @@
   padding: 5px;
 }
 
-.nav-right{
+.nav-right {
   text-align: right;
 }
 
@@ -41,22 +49,20 @@
   text-align: center;
 }
 
-
-.card{
-  border:none !important;
+.card {
+  border: none !important;
 }
 
-.card-body{
+.card-body {
   border-radius: 15px;
   background-color: var(--secondary-color);
 }
 
-.vh-100 .form-label, 
-.vh-100 .form-check-label 
-, .custom-text-color {
-  color: #FFFFFF;
+.vh-100 .form-label,
+.vh-100 .form-check-label,
+.custom-text-color {
+  color: #ffffff;
 }
-
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
@@ -67,7 +73,9 @@
 .card-registration .select-arrow {
   top: 13px;
 }
-.login-card {
+.login-card,
+.product-card,
+.product-container {
   background-color: white;
   border: 2px solid #000;
   padding: 40px;
@@ -75,17 +83,19 @@
   text-align: center;
 }
 
-.login-control {
+.login-control,
+.product-control {
   box-shadow: 3px 3px 0 #000;
   border: 2px solid #000;
 }
 
-.login-text-color {
+.login-text-color,
+.product-text-color {
   color: #000 !important;
 }
 
 button.login-button {
-  background-color: #ffcc00 ;
+  background-color: #ffcc00;
   border: 2px solid #000;
   padding: 12px;
   cursor: pointer;
@@ -93,3 +103,31 @@ button.login-button {
   box-shadow: 3px 3px 0 #000;
 }
 
+button.product-button {
+  background-color: var(--primary-color);
+  border: 2px solid #000;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  color: #ffcc00;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.invalid-input {
+  color: red;
+  font-size: 0.7rem;
+  text-align: end !important;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.list-container {
+  flex: 1;
+  height: auto;
+}
+
+.search-box{
+  background-color: var(--primary-color);
+  border:none;
+  border-radius: 0.85rem;
+}
