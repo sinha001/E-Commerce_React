@@ -10,7 +10,11 @@ const Products = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/products");
+    let result = await fetch("http://localhost:5000/products",{
+      headers:{
+        authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+      }
+    });
     result = await result.json();
     setProducts(result);
   };
@@ -18,6 +22,9 @@ const Products = () => {
   const deleteProduct = async (id) => {
     let result = await fetch(`http://localhost:5000/products/${id}`, {
       method: "Delete",
+      headers:{
+        authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+      }
     });
     result = result.json();
     if (result) {
@@ -29,7 +36,11 @@ const Products = () => {
   const handleSearch = async () => {
     console.log(key);
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`);
+      let result = await fetch(`http://localhost:5000/search/${key}`,{
+        headers:{
+          authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+        }
+      });
       result = await result.json();
       if (result) {
         setProducts(result);
@@ -43,10 +54,10 @@ const Products = () => {
         <div className="row justify-content-center align-items-center">
           <h2 className="text-center mb-3">Products</h2>
 
-          <div class="input-group search-box mb-3 py-3">
+          <div className="input-group search-box mb-3 py-3">
             <input
               type="search"
-              class="form-control me-3 rounded"
+              className="form-control me-3 rounded"
               placeholder="Search"
               aria-label="Search"
               value={key}
@@ -60,7 +71,7 @@ const Products = () => {
             />
             <button
               type="button"
-              class="btn btn-outline-light"
+              className="btn btn-outline-light"
               data-mdb-ripple-init
               onClick={handleSearch}
             >

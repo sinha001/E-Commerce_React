@@ -17,7 +17,6 @@ const SignUp = () => {
 
   const collectData = async (e) => {
     e.preventDefault(); // Prevents form from refreshing
-    console.warn(name, password, email, phoneNumber);
     let result = await fetch("http://localhost:5000/register", {
       method: "post",
       body: JSON.stringify({ name, password, email, phoneNumber }),
@@ -27,7 +26,8 @@ const SignUp = () => {
     });
 
     result = await result.json();
-    localStorage.setItem("user", JSON.stringify(result));
+    localStorage.setItem("user", JSON.stringify(result.result));
+    localStorage.setItem("token", JSON.stringify(result.auth));
     navigate("/");
   };
 
