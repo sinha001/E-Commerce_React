@@ -10,8 +10,18 @@ const Jwt = require("jsonwebtoken");
 const app = express();
 const jwtKey = process.env.JWT_KEY;
 
+
+const allowedOrigins = process.env.FRONTEND_URL?.split(",");
+
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Required if using cookies or authentication
+  })
+);
+
 
 app.get("/register", async (req, res) => {
   try {
