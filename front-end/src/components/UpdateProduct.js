@@ -9,12 +9,14 @@ const UpdateProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
 
+  const apiURL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     getProductDetails();
   }, []);
 
   const getProductDetails = async () => {
-    let result = await fetch(`http://localhost:5000/product/${params.id}`,{
+    let result = await fetch(`${apiURL}/product/${params.id}`,{
       headers:{
         authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
@@ -27,7 +29,7 @@ const UpdateProduct = () => {
   };
 
   const updateProduct = async () => {
-    let result = await fetch(`http://localhost:5000/product/${params.id}`,{
+    let result = await fetch(`${apiURL}/product/${params.id}`,{
         method:'put',
         body: JSON.stringify({name,price,company,category}),
         headers:

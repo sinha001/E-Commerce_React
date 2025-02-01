@@ -7,6 +7,8 @@ const AddProduct = () => {
   const [company, setCompany] = useState("");
   const [error, setError] = useState(false);
 
+  const apiURL = process.env.REACT_APP_API_URL;
+
   const AddProduct = async () => {
     if (!name || !price || !category || !company) {
       setError(true);
@@ -15,7 +17,7 @@ const AddProduct = () => {
 
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
-    let result = await fetch("http://localhost:5000/add-product", {
+    let result = await fetch(`${apiURL}/add-product`, {
       method: "post",
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {

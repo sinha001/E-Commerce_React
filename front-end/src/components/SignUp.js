@@ -8,6 +8,8 @@ const SignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
 
+  const apiURL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
@@ -17,7 +19,7 @@ const SignUp = () => {
 
   const collectData = async (e) => {
     e.preventDefault(); // Prevents form from refreshing
-    let result = await fetch("http://localhost:5000/register", {
+    let result = await fetch(`${apiURL}/register`, {
       method: "post",
       body: JSON.stringify({ name, password, email, phoneNumber }),
       headers: {

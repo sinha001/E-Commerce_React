@@ -5,6 +5,9 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const navigate = useNavigate();
 
+  const apiURL = process.env.REACT_APP_API_URL;
+
+
   useEffect(()=>{
     const auth = localStorage.getItem("user");
     if(auth){
@@ -13,7 +16,7 @@ const Login = () => {
   },);
 
   const handleLogin = async () => {
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch(`${apiURL}/login`, {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {

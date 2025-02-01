@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 require("./db/config");
 const User = require("./db/User");
@@ -6,7 +8,7 @@ const Product = require("./db/Product");
 const Jwt = require("jsonwebtoken");
 
 const app = express();
-const jwtKey = "e-comm";
+const jwtKey = process.env.JWT_KEY;
 
 app.use(express.json());
 app.use(cors());
@@ -123,6 +125,8 @@ function verifyToken(req, res, next) {
   }
 }
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
   console.warn("server is running on port 5000");
 });

@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [key, setKey] = useState("");
+  
+  const apiURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getProducts();
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/products",{
+    let result = await fetch(`${apiURL}/products`,{
       headers:{
         authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
@@ -20,7 +22,7 @@ const Products = () => {
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`http://localhost:5000/products/${id}`, {
+    let result = await fetch(`${apiURL}/products/${id}`, {
       method: "Delete",
       headers:{
         authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
@@ -36,7 +38,7 @@ const Products = () => {
   const handleSearch = async () => {
     console.log(key);
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`,{
+      let result = await fetch(`${apiURL}/search/${key}`,{
         headers:{
           authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
         }
