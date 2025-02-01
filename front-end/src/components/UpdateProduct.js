@@ -16,7 +16,7 @@ const UpdateProduct = () => {
   }, []);
 
   const getProductDetails = async () => {
-    let result = await fetch(`${apiURL}/product/${params.id}`,{
+    let result = await fetch(`${apiURL.replace(/\/$/, "")}/product/${params.id}`,{
       headers:{
         authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
@@ -29,7 +29,7 @@ const UpdateProduct = () => {
   };
 
   const updateProduct = async () => {
-    let result = await fetch(`${apiURL}/product/${params.id}`,{
+    let result = await fetch(`${apiURL.replace(/\/$/, "")}/product/${params.id}`,{
         method:'put',
         body: JSON.stringify({name,price,company,category}),
         headers:

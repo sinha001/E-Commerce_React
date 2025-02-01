@@ -19,7 +19,7 @@ const SignUp = () => {
 
   const collectData = async (e) => {
     e.preventDefault(); // Prevents form from refreshing
-    let result = await fetch(`${apiURL}/register`, {
+    let result = await fetch(`${apiURL.replace(/\/$/, "")}/register`, {
       method: "post",
       body: JSON.stringify({ name, password, email, phoneNumber }),
       headers: {

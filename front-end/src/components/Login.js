@@ -16,7 +16,7 @@ const Login = () => {
   },);
 
   const handleLogin = async () => {
-    let result = await fetch(`${apiURL}/login`, {
+    let result = await fetch(`${apiURL.replace(/\/$/, "")}/login`, {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
