@@ -11,7 +11,7 @@ const app = express();
 const jwtKey = process.env.JWT_KEY;
 
 
-const allowedOrigins = process.env.FRONTEND_URL?.split(",");
+const allowedOrigins = process.env.FRONTEND_URL;
 
 app.use(express.json());
 app.use(
