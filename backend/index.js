@@ -16,11 +16,12 @@ const allowedOrigins = process.env.FRONTEND_URL;
 app.use(express.json());
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Required if using cookies or authentication
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 
 app.get("/register", async (req, res) => {
